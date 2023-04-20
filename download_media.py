@@ -103,7 +103,7 @@ zip -j "$zip_file" "$temp_dir"/*.mp4 >/dev/null 2>&1
 rm -rf "$temp_dir"
 
 # Run the download.sh content using Python
-os.system("bash -c '%s'" % download_sh)
+os.system("bash -c '%s'" % download_sh.strip())
 
 # Serve the generated zip file over HTTP
 zip_file = "/root/mp4_files.zip"
