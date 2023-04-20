@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Install required packages
+apt-get update
+apt-get install -y bc zip
+
 dir_path="/root/stable-diffusion-webui/outputs/img2img-images"
 file_counts=()
 max_files=0
