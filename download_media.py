@@ -97,7 +97,7 @@ done
 # Create a .zip file containing the .mp4 files
 echo "Compressing .mp4 files into a zip file..."
 zip_file="/root/mp4_files.zip"
-zip -j "$zip_file" "$temp_dir"/*.mp4 >/dev/null 2>&1
+zip -j "$zip_file" "$temp_dir"/*.mp4 >/dev/null 2>&1"
 
 # Remove the temporary directory
 rm -rf "$temp_dir"
