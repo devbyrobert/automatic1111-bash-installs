@@ -1,13 +1,15 @@
 #!/bin/bash
 
 # Install required packages
-apt-get update
-apt-get install -y bc zip
+echo "Installing required packages..."
+apt-get update >/dev/null
+apt-get install -y bc zip >/dev/null
 
 dir_path="/root/stable-diffusion-webui/outputs/img2img-images"
 file_counts=()
 max_files=0
 
+echo "Analyzing subdirectories..."
 # Loop through subdirectories
 for subdir in "$dir_path"/*/; do
   # Ensure the entry is a directory
@@ -62,6 +64,7 @@ fi
 # Create a temporary directory to store the selected .mp4 files
 temp_dir=$(mktemp -d)
 
+echo "Copying selected .mp4 files..."
 # Copy .mp4 files from the selected directories to the temporary directory
 for subdir in "$dir_path"/*/; do
   # Ensure the entry is a directory
@@ -71,14 +74,17 @@ for subdir in "$dir_path"/*/; do
 
     if [ $file_count -ge $min_files ]; then
       # Copy all .mp4 files in the subdirectory to the temporary directory
-      find "$subdir" -type f -iname "*.mp4" -exec cp {} "$temp_dir" \;
+      find "$subdir" -type f -iname "*.mp4" -exec cp {} "$temp_dir" \; >/dev/null 2>&1
     fi
   fi
 done
 
 # Create a .zip file containing the .mp4 files
 zip_file="/root/mp4_files.zip"
-zip -j "$zip_file" "$temp_dir"/*.mp4
+echo "Compressing .mp4 files..."
+zip -j "$zip_file" "$temp_dir"/*.mp4 >/dev/null
 
 # Remove the temporary directory
 rm -rf "$temp_dir"
+
+echo "Done."
