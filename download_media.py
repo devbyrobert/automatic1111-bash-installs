@@ -121,4 +121,4 @@ if Path(zip_file).is_file():
     print(f"Download the file by accessing http://{server_ip}:{PORT}/{os.path.basename(zip_file)} on your local computer.")
     httpd.serve_forever()
 else:
-    print(f"The zip file '{zip_file}' was not found.")
+    print(f"The zip file {zip_file} was not found.")
