@@ -13,7 +13,7 @@ echo "Step 4: Downloading model to stable-diffusion-webui/models/Stable-diffusio
 wget -q -O models/Realistic_Vision.ckpt https://huggingface.co/SG161222/Realistic_Vision_V2.0/resolve/main/Realistic_Vision_V2.0.ckpt
 
 echo "Step 5: Installing text-to-video extension..."
-https://github.com/deforum-art/sd-webui-text2video.git extensions/sd-webui-text2video > /dev/null 2>&1
+git clone https://github.com/deforum-art/sd-webui-text2video.git extensions/sd-webui-text2video > /dev/null 2>&1
 
 echo "Step 6: Installing opencv-python package..."
 pip install opencv-python > /dev/null 2>&1
